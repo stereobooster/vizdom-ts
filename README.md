@@ -1,3 +1,11 @@
+[vizdom](https://github.com/vizdom-dev/vizdom) "fork".
+
+The original package uses the [WebAssembly/ES Module Integration](https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration) proposal, which is not supported by [Vite](https://github.com/vitejs/vite/discussions/7763). Additionally, the plugin [doesn't seem to work with Vitest](https://github.com/Menci/vite-plugin-wasm/issues/56#issuecomment-2253169420) and Astro.
+
+I copied the content of the npm package and edited `vizdom_ts.js` so it works with Vite and Node. It probably doesn't work in the browser.
+
+---
+
 # Vizdom
 
 Vizdom is a declarative graph layout and rendering engine compiled from Rust to

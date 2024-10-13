@@ -1,5 +1,5 @@
 {
-  "name": "@vizdom/vizdom-ts-esm",
+  "name": "@stereobooster/vizdom-ts-esm",
   "type": "module",
   "collaborators": [
     "Nick Angelou <nick@vizdom.dev>"
@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vizdom-dev/vizdom-ts"
+    "url": "https://github.com/stereobooster/vizdom-ts"
   },
   "files": [
     "vizdom_ts_bg.wasm",
