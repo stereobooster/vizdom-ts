@@ -1,0 +1,42 @@
+{
+  "name": "@vizdom/vizdom-ts-esm",
+  "type": "module",
+  "collaborators": [
+    "Nick Angelou <nick@vizdom.dev>"
+  ],
+  "description": "A layout and rendering engine for graphs",
+  "version": "0.1.7",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vizdom-dev/vizdom-ts"
+  },
+  "files": [
+    "vizdom_ts_bg.wasm",
+    "vizdom_ts.js",
+    "vizdom_ts_bg.js",
+    "vizdom_ts.d.ts",
+    "third_party/"
+  ],
+  "main": "vizdom_ts.js",
+  "types": "vizdom_ts.d.ts",
+  "sideEffects": [
+    "./vizdom_ts.js",
+    "./snippets/*"
+  ],
+  "keywords": [
+    "vizdom",
+    "graph",
+    "dag",
+    "layout",
+    "render",
+    "draw",
+    "svg",
+    "network",
+    "node",
+    "edge",
+    "vertex",
+    "visualization",
+    "visualisation"
+  ]
+}
