@@ -5,88 +5,9 @@
 export function run(): void;
 /**
 */
-export enum Shape {
-/**
-* A rectangle shape.
-*/
-  Rectangle = 0,
-/**
-* A square shape.
-*/
-  Square = 1,
-/**
-* A circle shape.
-*/
-  Circle = 2,
-/**
-* An ellipse shape.
-*/
-  Ellipse = 3,
-/**
-* An equilateral triangle shape.
-*/
-  Triangle = 4,
-/**
-* A diamond shape.
-*/
-  Diamond = 5,
-/**
-* A plaintext shape. Acts like an invisible rectangle.
-*/
-  Plaintext = 6,
-/**
-* An underline shape. Acts like an invisible rectangle with only the
-* bottom edge.
-*/
-  Underline = 7,
-}
-/**
-*/
-export enum NodeType {
-/**
-* A 'normal' graph node.
-*/
-  Normal = 0,
-/**
-* A 'cluster' node can hold child nodes.
-*/
-  Cluster = 1,
-}
-/**
-*/
-export enum LabelPos {
-/**
-* Position a label in the middle of the edge path.
-*/
-  C = 0,
-/**
-* Position a label to the left of the edge path.
-*/
-  L = 1,
-/**
-* Position a label to the right of the edge path.
-*/
-  R = 2,
-}
-/**
-*/
-export enum Dir {
-/**
-* Draw an arrowhead in the forward (expected) direction.
-*/
-  Forward = 0,
-/**
-* Draw an arrowhead in the backwards direction.
-*/
-  Back = 1,
-/**
-* Draw an arrowhead in both directions.
-*/
-  Both = 2,
-/**
-* Do not draw any arrow heads. Overlaps with [`FfiArrowHead::None`](super::FfiArrowHead::None).
-*/
-  None = 3,
+export enum CompressionMode {
+  None = 0,
+  Brotli = 1,
 }
 /**
 */
@@ -130,28 +51,6 @@ export enum Curve {
 }
 /**
 */
-export enum VertexStyle {
-/**
-* Render a solid outline for a vertex shape.
-*/
-  Solid = 0,
-/**
-* Render a dashed outline for a vertex shape.
-*/
-  Dashed = 1,
-/**
-* Render a dotted outline for a vertex shape.
-*/
-  Dotted = 2,
-}
-/**
-*/
-export enum CompressionMode {
-  None = 0,
-  Brotli = 1,
-}
-/**
-*/
 export enum ArrowHead {
 /**
 * Render arrowheads.
@@ -164,19 +63,19 @@ export enum ArrowHead {
 }
 /**
 */
-export enum EdgeStyle {
+export enum LabelPos {
 /**
-* Render a solid outline for an edge shape.
+* Position a label in the middle of the edge path.
 */
-  Solid = 0,
+  C = 0,
 /**
-* Render a dashed edge path and shape
+* Position a label to the left of the edge path.
 */
-  Dashed = 1,
+  L = 1,
 /**
-* Render a dotted edge path and shape.
+* Position a label to the right of the edge path.
 */
-  Dotted = 2,
+  R = 2,
 }
 /**
 */
@@ -198,313 +97,107 @@ export enum RankDir {
 */
   RL = 3,
 }
-
-export interface IGraphLayout {
-    /**
-     * The number of pixels between each rank in the layout. Default `50.0`.
-     *
-     * In top-to-bottom (`RankDir.TB`) layouts, this can be thought of the row
-     * spacing.
-     */
-    rank_sep?: number;
-    /**
-     * The number of pixels that separate nodes horizontally in the layout.
-     * Default `50.0`.
-     */
-    node_sep?: number;
-    /**
-     * The number of pixels that separate edges horizontally in the layout.
-     * Default `20.0`.
-     */
-    edge_sep?: number;
-    /**
-     * The number of pixels to use as a margin around the left and right of the
-     * graph. Default `10.0`.
-     */
-    margin_x?: number;
-    /**
-     * The number of pixels to use as a margin around the top and bottom of the
-     * graph. Default `10.0`.
-     */
-    margin_y?: number;
-    /**
-     * The direction for how ranks are computed. Default `RankDir.TB`.
-     */
-    rank_dir?: RankDir;
+/**
+*/
+export enum EdgeStyle {
+/**
+* Render a solid outline for an edge shape.
+*/
+  Solid = 0,
+/**
+* Render a dashed edge path and shape
+*/
+  Dashed = 1,
+/**
+* Render a dotted edge path and shape.
+*/
+  Dotted = 2,
 }
-
-
-
-export interface IGraphRender {
-    /**
-     *  The graphs's ID. Optional.
-     *
-     *  An optional ID that uniquely identifies this graph.
-     */
-    id?: string;
-    /**
-     * The graphs's label. Optional.
-     *
-     * This value is not required to be unique.
-     */
-    label?: string;
-    /**
-     * A tooltip label. Optional.
-     *
-     * A tooltip is shown when hovering over the SVG.
-     */
-    tooltip?: string;
-    /**
-     * The graphs's background color. Defaults to `transparent`.
-     *
-     * The string values can be one of the following (case insensitive):
-     *
-     * 1. One of the names from the [SVG
-     *    colors](https://graphviz.org/doc/info/colors.html#svg)
-     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
-     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
-     *    or "0.123,0.456,0.789,0.000"
-     */
-    bg_color?: string;
+/**
+*/
+export enum VertexStyle {
+/**
+* Render a solid outline for a vertex shape.
+*/
+  Solid = 0,
+/**
+* Render a dashed outline for a vertex shape.
+*/
+  Dashed = 1,
+/**
+* Render a dotted outline for a vertex shape.
+*/
+  Dotted = 2,
 }
-
-
-
-export interface IGraph {
-    layout?: IGraphLayout;
-    render?: IGraphRender;
+/**
+*/
+export enum NodeType {
+/**
+* A 'normal' graph node.
+*/
+  Normal = 0,
+/**
+* A 'cluster' node can hold child nodes.
+*/
+  Cluster = 1,
 }
-
-
-
-export type GraphSet = (graph: IGraph) => IGraph;
-
-
-
-export interface IJsonPosition {
-    graph: IJsonGraphPosition;
-    nodes: IJsonVertexPosition[];
-    edges: IJsonEdgePosition[];
+/**
+*/
+export enum Dir {
+/**
+* Draw an arrowhead in the forward (expected) direction.
+*/
+  Forward = 0,
+/**
+* Draw an arrowhead in the backwards direction.
+*/
+  Back = 1,
+/**
+* Draw an arrowhead in both directions.
+*/
+  Both = 2,
+/**
+* Do not draw any arrow heads. Overlaps with [`FfiArrowHead::None`](super::FfiArrowHead::None).
+*/
+  None = 3,
 }
-
-
-
-export interface IJsonGraphPosition {
-    id: string;
-    label: string;
-    rank_dir: RankDir;
-    width: number;
-    height: number;
+/**
+*/
+export enum Shape {
+/**
+* A rectangle shape.
+*/
+  Rectangle = 0,
+/**
+* A square shape.
+*/
+  Square = 1,
+/**
+* A circle shape.
+*/
+  Circle = 2,
+/**
+* An ellipse shape.
+*/
+  Ellipse = 3,
+/**
+* An equilateral triangle shape.
+*/
+  Triangle = 4,
+/**
+* A diamond shape.
+*/
+  Diamond = 5,
+/**
+* A plaintext shape. Acts like an invisible rectangle.
+*/
+  Plaintext = 6,
+/**
+* An underline shape. Acts like an invisible rectangle with only the
+* bottom edge.
+*/
+  Underline = 7,
 }
-
-
-
-export interface IJsonVertexPosition {
-    id: string;
-    label: string;
-    shape: Shape;
-    pen_width: number;
-    font_size: number;
-    node_type: NodeType;
-    elem_status: ElemStatus;
-    rank?: number;
-    order?: number;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-}
-
-
-
-export interface IJsonPointPosition {
-    x: number;
-    y: number;
-}
-
-
-
-export interface IJsonEdgePosition {
-    id: string;
-    label: string;
-    shape: Shape;
-    pen_width: number;
-    font_size: number;
-    elem_status: ElemStatus;
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    points: IJsonPointPosition[];
-}
-
-
-
-export interface IVertexLayout {
-    /**
-     * The bounding box width for the vertex's shape.
-     *
-     * You can optionally supply this value (along with `shape_h`) if you only
-     * want layout coordinates. This is useful if you are using a separate
-     * rendering engine and do not require vizdom's auto render capability.
-     */
-    shape_w?: number;
-    /**
-     * The bounding box height for the vertex's shape.
-     *
-     * You can optionally supply this value (along with `shape_w`) if you only
-     * want layout coordinates. This is useful if you are using a separate
-     * rendering engine and do not require vizdom's auto render capability.
-     */
-    shape_h?: number;
-}
-
-
-
-export interface IVertexRender {
-    /**
-     * The bounding box text width for the vertex's label.
-     *
-     * This field is typically set automatically and can change the way the
-     * rendered glyphs appear inside a node. In most (if not all) cases, this
-     * should be left alone.
-     */
-    text_w?: number;
-    /**
-     * The bounding box text height for the vertex's label.
-     *
-     * This field is typically set automatically and can change the way the
-     * rendered glyphs appear inside a node. In most (if not all) cases, this
-     * should be left alone.
-     */
-    text_h?: number;
-    /**
-     * The stroke width of the vertex's border. Defaults to `1`.
-     */
-    pen_width?: number;
-    /**
-     * The size of the font to render the text label. Defaults to `16`.
-     */
-    font_size?: number;
-    /**
-     * The vertex's outline style. Defaults to `VertexStyle.None`.
-     */
-    style?: VertexStyle;
-    /**
-     * The vertex's shape. Defaults to `Shape.Rectangle`.
-     */
-    shape?: Shape;
-    /**
-     * The vertex's color. Defaults to `black`.
-     *
-     * The string values can be one of the following (case insensitive):
-     *
-     * 1. One of the names from the [SVG
-     *    colors](https://graphviz.org/doc/info/colors.html#svg)
-     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
-     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
-     *    or "0.123,0.456,0.789,0.000"
-     */
-    color?: string;
-    /**
-     * The vertex's font color. Defaults to `black`.
-     *
-     * The string values can be one of the following (case insensitive):
-     *
-     * 1. One of the names from the [SVG
-     *    colors](https://graphviz.org/doc/info/colors.html#svg)
-     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
-     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
-     *    or "0.123,0.456,0.789,0.000"
-     */
-    font_color?: string;
-    /**
-     * The vertex's outline color. Defaults to `white`.
-     *
-     * The string values can be one of the following (case insensitive):
-     *
-     * 1. One of the names from the [SVG
-     *    colors](https://graphviz.org/doc/info/colors.html#svg)
-     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
-     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
-     *    or "0.123,0.456,0.789,0.000"
-     */
-    fill_color?: string;
-    /**
-     *  The vertex's ID. Optional.
-     *
-     *  An optional ID that uniquely identifies this vertex. This field is used in
-     *  two cases:
-     *
-     *  1. If no label was provided, the tooltip uses this value
-     *  2. The graph 'diff', functionality uses this value to determine if a
-     *     vertex/edge has been modified.
-     */
-    id?: string;
-    /**
-     * The vertex's label. Optional.
-     *
-     * This value is not required to be unique.
-     */
-    label?: string;
-    /**
-     * A tooltip label. Optional.
-     *
-     * A tooltip is shown when hovering over the SVG.
-     */
-    tooltip?: string;
-}
-
-
-
-export interface IVertex {
-    layout?: IVertexLayout;
-    render?: IVertexRender;
-}
-
-
-
-export type VertexSet = (vertex: IVertex) => IVertex;
-
-
-
-export interface IOptions {
-    /**
-     *  If true, automatically compute the bounding box of the node/edge shape and
-     *  text. Defaults to `true`.
-     */
-    compute_bounding_box?: boolean;
-}
-
-
-
-export interface IVizOptions {
-    /**
-     *  The unique `client_id` that identifies your organization.
-     */
-    client_id: string;
-    /**
-     *  The unique `client_scret` that authenticates this library to your
-     *  organization.
-     */
-    client_secret: string;
-    /**
-     *  The unique `graph_id` that identifies which graph to update.
-     */
-    graph_id: string;
-    /**
-     *  An optional key that uniquely defines a version of the graph. Providing
-     *  this value will enable the ability to see historical changes between
-     *  versions.
-     */
-    version_key?: string;
-    /**
-     *  An optional parameter to enable debug messages.
-     */
-    debug?: boolean;
-}
-
-
 
 export interface IEdgeLayout {
     /**
@@ -665,6 +358,313 @@ export interface IEdge {
 export type EdgeSet = (Edge: IEdge) => IEdge;
 
 
+
+export interface IGraphLayout {
+    /**
+     * The number of pixels between each rank in the layout. Default `50.0`.
+     *
+     * In top-to-bottom (`RankDir.TB`) layouts, this can be thought of the row
+     * spacing.
+     */
+    rank_sep?: number;
+    /**
+     * The number of pixels that separate nodes horizontally in the layout.
+     * Default `50.0`.
+     */
+    node_sep?: number;
+    /**
+     * The number of pixels that separate edges horizontally in the layout.
+     * Default `20.0`.
+     */
+    edge_sep?: number;
+    /**
+     * The number of pixels to use as a margin around the left and right of the
+     * graph. Default `10.0`.
+     */
+    margin_x?: number;
+    /**
+     * The number of pixels to use as a margin around the top and bottom of the
+     * graph. Default `10.0`.
+     */
+    margin_y?: number;
+    /**
+     * The direction for how ranks are computed. Default `RankDir.TB`.
+     */
+    rank_dir?: RankDir;
+}
+
+
+
+export interface IGraphRender {
+    /**
+     *  The graphs's ID. Optional.
+     *
+     *  An optional ID that uniquely identifies this graph.
+     */
+    id?: string;
+    /**
+     * The graphs's label. Optional.
+     *
+     * This value is not required to be unique.
+     */
+    label?: string;
+    /**
+     * A tooltip label. Optional.
+     *
+     * A tooltip is shown when hovering over the SVG.
+     */
+    tooltip?: string;
+    /**
+     * The graphs's background color. Defaults to `transparent`.
+     *
+     * The string values can be one of the following (case insensitive):
+     *
+     * 1. One of the names from the [SVG
+     *    colors](https://graphviz.org/doc/info/colors.html#svg)
+     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
+     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
+     *    or "0.123,0.456,0.789,0.000"
+     */
+    bg_color?: string;
+}
+
+
+
+export interface IGraph {
+    layout?: IGraphLayout;
+    render?: IGraphRender;
+}
+
+
+
+export type GraphSet = (graph: IGraph) => IGraph;
+
+
+
+export interface IJsonPosition {
+    graph: IJsonGraphPosition;
+    nodes: IJsonVertexPosition[];
+    edges: IJsonEdgePosition[];
+}
+
+
+
+export interface IJsonGraphPosition {
+    id: string;
+    label: string;
+    rank_dir: RankDir;
+    width: number;
+    height: number;
+}
+
+
+
+export interface IJsonVertexPosition {
+    id: string;
+    label: string;
+    shape: Shape;
+    pen_width: number;
+    font_size: number;
+    node_type: NodeType;
+    elem_status: ElemStatus;
+    rank?: number;
+    order?: number;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+}
+
+
+
+export interface IJsonPointPosition {
+    x: number;
+    y: number;
+}
+
+
+
+export interface IJsonEdgePosition {
+    id: string;
+    label: string;
+    shape: Shape;
+    pen_width: number;
+    font_size: number;
+    elem_status: ElemStatus;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    points: IJsonPointPosition[];
+}
+
+
+
+export interface IOptions {
+    /**
+     *  If true, automatically compute the bounding box of the node/edge shape and
+     *  text. Defaults to `true`.
+     */
+    compute_bounding_box?: boolean;
+}
+
+
+
+export interface IVizOptions {
+    /**
+     *  The unique `client_id` that identifies your organization.
+     */
+    client_id: string;
+    /**
+     *  The unique `client_scret` that authenticates this library to your
+     *  organization.
+     */
+    client_secret: string;
+    /**
+     *  The unique `graph_id` that identifies which graph to update.
+     */
+    graph_id: string;
+    /**
+     *  An optional key that uniquely defines a version of the graph. Providing
+     *  this value will enable the ability to see historical changes between
+     *  versions.
+     */
+    version_key?: string;
+    /**
+     *  An optional parameter to enable debug messages.
+     */
+    debug?: boolean;
+}
+
+
+
+export interface IVertexLayout {
+    /**
+     * The bounding box width for the vertex's shape.
+     *
+     * You can optionally supply this value (along with `shape_h`) if you only
+     * want layout coordinates. This is useful if you are using a separate
+     * rendering engine and do not require vizdom's auto render capability.
+     */
+    shape_w?: number;
+    /**
+     * The bounding box height for the vertex's shape.
+     *
+     * You can optionally supply this value (along with `shape_w`) if you only
+     * want layout coordinates. This is useful if you are using a separate
+     * rendering engine and do not require vizdom's auto render capability.
+     */
+    shape_h?: number;
+}
+
+
+
+export interface IVertexRender {
+    /**
+     * The bounding box text width for the vertex's label.
+     *
+     * This field is typically set automatically and can change the way the
+     * rendered glyphs appear inside a node. In most (if not all) cases, this
+     * should be left alone.
+     */
+    text_w?: number;
+    /**
+     * The bounding box text height for the vertex's label.
+     *
+     * This field is typically set automatically and can change the way the
+     * rendered glyphs appear inside a node. In most (if not all) cases, this
+     * should be left alone.
+     */
+    text_h?: number;
+    /**
+     * The stroke width of the vertex's border. Defaults to `1`.
+     */
+    pen_width?: number;
+    /**
+     * The size of the font to render the text label. Defaults to `16`.
+     */
+    font_size?: number;
+    /**
+     * The vertex's outline style. Defaults to `VertexStyle.None`.
+     */
+    style?: VertexStyle;
+    /**
+     * The vertex's shape. Defaults to `Shape.Rectangle`.
+     */
+    shape?: Shape;
+    /**
+     * The vertex's color. Defaults to `black`.
+     *
+     * The string values can be one of the following (case insensitive):
+     *
+     * 1. One of the names from the [SVG
+     *    colors](https://graphviz.org/doc/info/colors.html#svg)
+     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
+     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
+     *    or "0.123,0.456,0.789,0.000"
+     */
+    color?: string;
+    /**
+     * The vertex's font color. Defaults to `black`.
+     *
+     * The string values can be one of the following (case insensitive):
+     *
+     * 1. One of the names from the [SVG
+     *    colors](https://graphviz.org/doc/info/colors.html#svg)
+     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
+     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
+     *    or "0.123,0.456,0.789,0.000"
+     */
+    font_color?: string;
+    /**
+     * The vertex's outline color. Defaults to `white`.
+     *
+     * The string values can be one of the following (case insensitive):
+     *
+     * 1. One of the names from the [SVG
+     *    colors](https://graphviz.org/doc/info/colors.html#svg)
+     * 2. RGB and RGBA hex values. i.e. "#ff00ff" or "#FF00FF00"
+     * 3. HSV and HSVA values comma or space delimited. i.e. "0.123 0.456 0.789"
+     *    or "0.123,0.456,0.789,0.000"
+     */
+    fill_color?: string;
+    /**
+     *  The vertex's ID. Optional.
+     *
+     *  An optional ID that uniquely identifies this vertex. This field is used in
+     *  two cases:
+     *
+     *  1. If no label was provided, the tooltip uses this value
+     *  2. The graph 'diff', functionality uses this value to determine if a
+     *     vertex/edge has been modified.
+     */
+    id?: string;
+    /**
+     * The vertex's label. Optional.
+     *
+     * This value is not required to be unique.
+     */
+    label?: string;
+    /**
+     * A tooltip label. Optional.
+     *
+     * A tooltip is shown when hovering over the SVG.
+     */
+    tooltip?: string;
+}
+
+
+
+export interface IVertex {
+    layout?: IVertexLayout;
+    render?: IVertexRender;
+}
+
+
+
+export type VertexSet = (vertex: IVertex) => IVertex;
+
+
 /**
 */
 export class DirectedGraph {
@@ -715,6 +715,43 @@ export class DirectedGraph {
 * @returns {Promise<any>}
 */
   upload(): Promise<any>;
+}
+/**
+*/
+export class DotDirectedGraph {
+  free(): void;
+/**
+* @returns {PositionedDotDirectedGraph}
+*/
+  layout(): PositionedDotDirectedGraph;
+}
+/**
+*/
+export class DotGraph {
+  free(): void;
+/**
+* @param {IVizOptions | undefined} [opts]
+* @returns {DotDirectedGraph}
+*/
+  to_directed(opts?: IVizOptions): DotDirectedGraph;
+}
+/**
+*/
+export class DotParser {
+  free(): void;
+/**
+*/
+  constructor();
+/**
+* @param {string} input
+* @returns {DotGraph}
+*/
+  parse(input: string): DotGraph;
+}
+/**
+*/
+export class DotUndirectedGraph {
+  free(): void;
 }
 /**
 */
@@ -855,6 +892,19 @@ export class OVizOptions {
 /**
 */
 export class PositionedDirectedGraph {
+  free(): void;
+/**
+* @returns {Svg}
+*/
+  to_svg(): Svg;
+/**
+* @returns {Json}
+*/
+  to_json(): Json;
+}
+/**
+*/
+export class PositionedDotDirectedGraph {
   free(): void;
 /**
 * @returns {Svg}

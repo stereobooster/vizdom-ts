@@ -219,12 +219,12 @@ function makeMutClosure(arg0, arg1, dtor, f) {
     CLOSURE_DTORS.register(real, state, state);
     return real;
 }
-function __wbg_adapter_50(arg0, arg1) {
-    wasm._dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h4f6f4057e53bdfcb(arg0, arg1);
+function __wbg_adapter_50(arg0, arg1, arg2) {
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hca8dea4bef9dcc8d(arg0, arg1, addHeapObject(arg2));
 }
 
-function __wbg_adapter_53(arg0, arg1, arg2) {
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__ha7474286b71f88dc(arg0, arg1, addHeapObject(arg2));
+function __wbg_adapter_53(arg0, arg1) {
+    wasm._dyn_core__ops__function__FnMut_____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hae5e36ead149e92f(arg0, arg1);
 }
 
 /**
@@ -241,24 +241,7 @@ function handleError(f, args) {
     }
 }
 function __wbg_adapter_93(arg0, arg1, arg2, arg3) {
-    wasm.wasm_bindgen__convert__closures__invoke2_mut__h48410a27008de49b(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
-}
-
-function notDefined(what) { return () => { throw new Error(`${what} is not defined`); }; }
-
-function _assertClass(instance, klass) {
-    if (!(instance instanceof klass)) {
-        throw new Error(`expected instance of ${klass.name}`);
-    }
-    return instance.ptr;
-}
-
-let stack_pointer = 128;
-
-function addBorrowedObject(obj) {
-    if (stack_pointer == 1) throw new Error('out of js stack');
-    heap[--stack_pointer] = obj;
-    return stack_pointer;
+    wasm.wasm_bindgen__convert__closures__invoke2_mut__h861ed51eef2af7c3(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
 }
 
 function passArray8ToWasm0(arg, malloc) {
@@ -267,87 +250,26 @@ function passArray8ToWasm0(arg, malloc) {
     WASM_VECTOR_LEN = arg.length;
     return ptr;
 }
+
+function _assertClass(instance, klass) {
+    if (!(instance instanceof klass)) {
+        throw new Error(`expected instance of ${klass.name}`);
+    }
+    return instance.ptr;
+}
+
+function notDefined(what) { return () => { throw new Error(`${what} is not defined`); }; }
+
+let stack_pointer = 128;
+
+function addBorrowedObject(obj) {
+    if (stack_pointer == 1) throw new Error('out of js stack');
+    heap[--stack_pointer] = obj;
+    return stack_pointer;
+}
 /**
 */
-export const Shape = Object.freeze({
-/**
-* A rectangle shape.
-*/
-Rectangle:0,"0":"Rectangle",
-/**
-* A square shape.
-*/
-Square:1,"1":"Square",
-/**
-* A circle shape.
-*/
-Circle:2,"2":"Circle",
-/**
-* An ellipse shape.
-*/
-Ellipse:3,"3":"Ellipse",
-/**
-* An equilateral triangle shape.
-*/
-Triangle:4,"4":"Triangle",
-/**
-* A diamond shape.
-*/
-Diamond:5,"5":"Diamond",
-/**
-* A plaintext shape. Acts like an invisible rectangle.
-*/
-Plaintext:6,"6":"Plaintext",
-/**
-* An underline shape. Acts like an invisible rectangle with only the
-* bottom edge.
-*/
-Underline:7,"7":"Underline", });
-/**
-*/
-export const NodeType = Object.freeze({
-/**
-* A 'normal' graph node.
-*/
-Normal:0,"0":"Normal",
-/**
-* A 'cluster' node can hold child nodes.
-*/
-Cluster:1,"1":"Cluster", });
-/**
-*/
-export const LabelPos = Object.freeze({
-/**
-* Position a label in the middle of the edge path.
-*/
-C:0,"0":"C",
-/**
-* Position a label to the left of the edge path.
-*/
-L:1,"1":"L",
-/**
-* Position a label to the right of the edge path.
-*/
-R:2,"2":"R", });
-/**
-*/
-export const Dir = Object.freeze({
-/**
-* Draw an arrowhead in the forward (expected) direction.
-*/
-Forward:0,"0":"Forward",
-/**
-* Draw an arrowhead in the backwards direction.
-*/
-Back:1,"1":"Back",
-/**
-* Draw an arrowhead in both directions.
-*/
-Both:2,"2":"Both",
-/**
-* Do not draw any arrow heads. Overlaps with [`FfiArrowHead::None`](super::FfiArrowHead::None).
-*/
-None:3,"3":"None", });
+export const CompressionMode = Object.freeze({ None:0,"0":"None",Brotli:1,"1":"Brotli", });
 /**
 */
 export const ElemStatus = Object.freeze({
@@ -388,24 +310,6 @@ SimpleQuadratic:2,"2":"SimpleQuadratic",
 AdaptiveBezier:3,"3":"AdaptiveBezier", });
 /**
 */
-export const VertexStyle = Object.freeze({
-/**
-* Render a solid outline for a vertex shape.
-*/
-Solid:0,"0":"Solid",
-/**
-* Render a dashed outline for a vertex shape.
-*/
-Dashed:1,"1":"Dashed",
-/**
-* Render a dotted outline for a vertex shape.
-*/
-Dotted:2,"2":"Dotted", });
-/**
-*/
-export const CompressionMode = Object.freeze({ None:0,"0":"None",Brotli:1,"1":"Brotli", });
-/**
-*/
 export const ArrowHead = Object.freeze({
 /**
 * Render arrowheads.
@@ -417,19 +321,19 @@ Normal:0,"0":"Normal",
 None:1,"1":"None", });
 /**
 */
-export const EdgeStyle = Object.freeze({
+export const LabelPos = Object.freeze({
 /**
-* Render a solid outline for an edge shape.
+* Position a label in the middle of the edge path.
 */
-Solid:0,"0":"Solid",
+C:0,"0":"C",
 /**
-* Render a dashed edge path and shape
+* Position a label to the left of the edge path.
 */
-Dashed:1,"1":"Dashed",
+L:1,"1":"L",
 /**
-* Render a dotted edge path and shape.
+* Position a label to the right of the edge path.
 */
-Dotted:2,"2":"Dotted", });
+R:2,"2":"R", });
 /**
 */
 export const RankDir = Object.freeze({
@@ -449,6 +353,102 @@ LR:2,"2":"LR",
 * Right to left
 */
 RL:3,"3":"RL", });
+/**
+*/
+export const EdgeStyle = Object.freeze({
+/**
+* Render a solid outline for an edge shape.
+*/
+Solid:0,"0":"Solid",
+/**
+* Render a dashed edge path and shape
+*/
+Dashed:1,"1":"Dashed",
+/**
+* Render a dotted edge path and shape.
+*/
+Dotted:2,"2":"Dotted", });
+/**
+*/
+export const VertexStyle = Object.freeze({
+/**
+* Render a solid outline for a vertex shape.
+*/
+Solid:0,"0":"Solid",
+/**
+* Render a dashed outline for a vertex shape.
+*/
+Dashed:1,"1":"Dashed",
+/**
+* Render a dotted outline for a vertex shape.
+*/
+Dotted:2,"2":"Dotted", });
+/**
+*/
+export const NodeType = Object.freeze({
+/**
+* A 'normal' graph node.
+*/
+Normal:0,"0":"Normal",
+/**
+* A 'cluster' node can hold child nodes.
+*/
+Cluster:1,"1":"Cluster", });
+/**
+*/
+export const Dir = Object.freeze({
+/**
+* Draw an arrowhead in the forward (expected) direction.
+*/
+Forward:0,"0":"Forward",
+/**
+* Draw an arrowhead in the backwards direction.
+*/
+Back:1,"1":"Back",
+/**
+* Draw an arrowhead in both directions.
+*/
+Both:2,"2":"Both",
+/**
+* Do not draw any arrow heads. Overlaps with [`FfiArrowHead::None`](super::FfiArrowHead::None).
+*/
+None:3,"3":"None", });
+/**
+*/
+export const Shape = Object.freeze({
+/**
+* A rectangle shape.
+*/
+Rectangle:0,"0":"Rectangle",
+/**
+* A square shape.
+*/
+Square:1,"1":"Square",
+/**
+* A circle shape.
+*/
+Circle:2,"2":"Circle",
+/**
+* An ellipse shape.
+*/
+Ellipse:3,"3":"Ellipse",
+/**
+* An equilateral triangle shape.
+*/
+Triangle:4,"4":"Triangle",
+/**
+* A diamond shape.
+*/
+Diamond:5,"5":"Diamond",
+/**
+* A plaintext shape. Acts like an invisible rectangle.
+*/
+Plaintext:6,"6":"Plaintext",
+/**
+* An underline shape. Acts like an invisible rectangle with only the
+* bottom edge.
+*/
+Underline:7,"7":"Underline", });
 
 const DirectedGraphFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
@@ -616,6 +616,179 @@ export class DirectedGraph {
     upload() {
         const ret = wasm.directedgraph_upload(this.__wbg_ptr);
         return takeObject(ret);
+    }
+}
+
+const DotDirectedGraphFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_dotdirectedgraph_free(ptr >>> 0, 1));
+/**
+*/
+export class DotDirectedGraph {
+
+    static __wrap(ptr) {
+        ptr = ptr >>> 0;
+        const obj = Object.create(DotDirectedGraph.prototype);
+        obj.__wbg_ptr = ptr;
+        DotDirectedGraphFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        DotDirectedGraphFinalization.unregister(this);
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_dotdirectedgraph_free(ptr, 0);
+    }
+    /**
+    * @returns {PositionedDotDirectedGraph}
+    */
+    layout() {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            wasm.dotdirectedgraph_layout(retptr, this.__wbg_ptr);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            if (r2) {
+                throw takeObject(r1);
+            }
+            return PositionedDotDirectedGraph.__wrap(r0);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+        }
+    }
+}
+
+const DotGraphFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_dotgraph_free(ptr >>> 0, 1));
+/**
+*/
+export class DotGraph {
+
+    static __wrap(ptr) {
+        ptr = ptr >>> 0;
+        const obj = Object.create(DotGraph.prototype);
+        obj.__wbg_ptr = ptr;
+        DotGraphFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        DotGraphFinalization.unregister(this);
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_dotgraph_free(ptr, 0);
+    }
+    /**
+    * @param {IVizOptions | undefined} [opts]
+    * @returns {DotDirectedGraph}
+    */
+    to_directed(opts) {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            wasm.dotgraph_to_directed(retptr, this.__wbg_ptr, isLikeNone(opts) ? 0 : addHeapObject(opts));
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            if (r2) {
+                throw takeObject(r1);
+            }
+            return DotDirectedGraph.__wrap(r0);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+        }
+    }
+}
+
+const DotParserFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_dotparser_free(ptr >>> 0, 1));
+/**
+*/
+export class DotParser {
+
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        DotParserFinalization.unregister(this);
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_dotparser_free(ptr, 0);
+    }
+    /**
+    */
+    constructor() {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            wasm.dotparser__new(retptr);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            if (r2) {
+                throw takeObject(r1);
+            }
+            this.__wbg_ptr = r0 >>> 0;
+            DotParserFinalization.register(this, this.__wbg_ptr, this);
+            return this;
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+        }
+    }
+    /**
+    * @param {string} input
+    * @returns {DotGraph}
+    */
+    parse(input) {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            const ptr0 = passStringToWasm0(input, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+            const len0 = WASM_VECTOR_LEN;
+            wasm.dotparser_parse(retptr, this.__wbg_ptr, ptr0, len0);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            if (r2) {
+                throw takeObject(r1);
+            }
+            return DotGraph.__wrap(r0);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+        }
+    }
+}
+
+const DotUndirectedGraphFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_dotundirectedgraph_free(ptr >>> 0, 1));
+/**
+*/
+export class DotUndirectedGraph {
+
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        DotUndirectedGraphFinalization.unregister(this);
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_dotundirectedgraph_free(ptr, 0);
     }
 }
 
@@ -1235,6 +1408,48 @@ export class PositionedDirectedGraph {
     }
 }
 
+const PositionedDotDirectedGraphFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_positioneddotdirectedgraph_free(ptr >>> 0, 1));
+/**
+*/
+export class PositionedDotDirectedGraph {
+
+    static __wrap(ptr) {
+        ptr = ptr >>> 0;
+        const obj = Object.create(PositionedDotDirectedGraph.prototype);
+        obj.__wbg_ptr = ptr;
+        PositionedDotDirectedGraphFinalization.register(obj, obj.__wbg_ptr, obj);
+        return obj;
+    }
+
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        PositionedDotDirectedGraphFinalization.unregister(this);
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_positioneddotdirectedgraph_free(ptr, 0);
+    }
+    /**
+    * @returns {Svg}
+    */
+    to_svg() {
+        const ret = wasm.positioneddotdirectedgraph_to_svg(this.__wbg_ptr);
+        return Svg.__wrap(ret);
+    }
+    /**
+    * @returns {Json}
+    */
+    to_json() {
+        const ret = wasm.positioneddotdirectedgraph_to_json(this.__wbg_ptr);
+        return Json.__wrap(ret);
+    }
+}
+
 const SvgFinalization = (typeof FinalizationRegistry === 'undefined')
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_svg_free(ptr >>> 0, 1));
@@ -1756,6 +1971,15 @@ export function __wbg_byteOffset_ea14c35fa6de38cc(arg0) {
     return ret;
 };
 
+export function __wbg_view_2a901bda0727aeb3(arg0) {
+    const ret = getObject(arg0).view;
+    return isLikeNone(ret) ? 0 : addHeapObject(ret);
+};
+
+export function __wbg_respond_a799bab31a44f2d7() { return handleError(function (arg0, arg1) {
+    getObject(arg0).respond(arg1 >>> 0);
+}, arguments) };
+
 export function __wbg_setbody_734cb3d7ee8e6e96(arg0, arg1) {
     getObject(arg0).body = getObject(arg1);
 };
@@ -1780,13 +2004,41 @@ export function __wbg_setsignal_91c4e8ebd04eb935(arg0, arg1) {
     getObject(arg0).signal = getObject(arg1);
 };
 
-export function __wbg_view_2a901bda0727aeb3(arg0) {
-    const ret = getObject(arg0).view;
+export function __wbg_signal_41e46ccad44bb5e2(arg0) {
+    const ret = getObject(arg0).signal;
+    return addHeapObject(ret);
+};
+
+export function __wbg_new_ebf2727385ee825c() { return handleError(function () {
+    const ret = new AbortController();
+    return addHeapObject(ret);
+}, arguments) };
+
+export function __wbg_abort_8659d889a7877ae3(arg0) {
+    getObject(arg0).abort();
+};
+
+export function __wbg_new_e27c93803e1acc42() { return handleError(function () {
+    const ret = new Headers();
+    return addHeapObject(ret);
+}, arguments) };
+
+export function __wbg_append_f3a4426bb50622c5() { return handleError(function (arg0, arg1, arg2, arg3, arg4) {
+    getObject(arg0).append(getStringFromWasm0(arg1, arg2), getStringFromWasm0(arg3, arg4));
+}, arguments) };
+
+export function __wbg_newwithstrandinit_a31c69e4cc337183() { return handleError(function (arg0, arg1, arg2) {
+    const ret = new Request(getStringFromWasm0(arg0, arg1), getObject(arg2));
+    return addHeapObject(ret);
+}, arguments) };
+
+export function __wbg_byobRequest_b32c77640da946ac(arg0) {
+    const ret = getObject(arg0).byobRequest;
     return isLikeNone(ret) ? 0 : addHeapObject(ret);
 };
 
-export function __wbg_respond_a799bab31a44f2d7() { return handleError(function (arg0, arg1) {
-    getObject(arg0).respond(arg1 >>> 0);
+export function __wbg_close_aca7442e6619206b() { return handleError(function (arg0) {
+    getObject(arg0).close();
 }, arguments) };
 
 export function __wbg_close_cef2400b120c9c73() { return handleError(function (arg0) {
@@ -1829,43 +2081,6 @@ export function __wbg_headers_5e283e8345689121(arg0) {
 export function __wbg_text_a94b91ea8700357a() { return handleError(function (arg0) {
     const ret = getObject(arg0).text();
     return addHeapObject(ret);
-}, arguments) };
-
-export function __wbg_signal_41e46ccad44bb5e2(arg0) {
-    const ret = getObject(arg0).signal;
-    return addHeapObject(ret);
-};
-
-export function __wbg_new_ebf2727385ee825c() { return handleError(function () {
-    const ret = new AbortController();
-    return addHeapObject(ret);
-}, arguments) };
-
-export function __wbg_abort_8659d889a7877ae3(arg0) {
-    getObject(arg0).abort();
-};
-
-export function __wbg_newwithstrandinit_a31c69e4cc337183() { return handleError(function (arg0, arg1, arg2) {
-    const ret = new Request(getStringFromWasm0(arg0, arg1), getObject(arg2));
-    return addHeapObject(ret);
-}, arguments) };
-
-export function __wbg_new_e27c93803e1acc42() { return handleError(function () {
-    const ret = new Headers();
-    return addHeapObject(ret);
-}, arguments) };
-
-export function __wbg_append_f3a4426bb50622c5() { return handleError(function (arg0, arg1, arg2, arg3, arg4) {
-    getObject(arg0).append(getStringFromWasm0(arg1, arg2), getStringFromWasm0(arg3, arg4));
-}, arguments) };
-
-export function __wbg_byobRequest_b32c77640da946ac(arg0) {
-    const ret = getObject(arg0).byobRequest;
-    return isLikeNone(ret) ? 0 : addHeapObject(ret);
-};
-
-export function __wbg_close_aca7442e6619206b() { return handleError(function (arg0) {
-    getObject(arg0).close();
 }, arguments) };
 
 export function __wbg_log_b103404cc5920657(arg0) {
@@ -1930,14 +2145,14 @@ export function __wbindgen_boolean_get(arg0) {
     return ret;
 };
 
-export function __wbindgen_error_new(arg0, arg1) {
-    const ret = new Error(getStringFromWasm0(arg0, arg1));
-    return addHeapObject(ret);
-};
-
 export function __wbindgen_as_number(arg0) {
     const ret = +getObject(arg0);
     return ret;
+};
+
+export function __wbindgen_error_new(arg0, arg1) {
+    const ret = new Error(getStringFromWasm0(arg0, arg1));
+    return addHeapObject(ret);
 };
 
 export function __wbindgen_bigint_from_i64(arg0) {
@@ -1959,9 +2174,33 @@ export function __wbg_set_f975102236d3c502(arg0, arg1, arg2) {
     getObject(arg0)[takeObject(arg1)] = takeObject(arg2);
 };
 
-export const __wbg_clearTimeout_2c5131fab6da721d = typeof clearTimeout == 'function' ? clearTimeout : notDefined('clearTimeout');
+export function __wbindgen_cb_drop(arg0) {
+    const obj = takeObject(arg0).original;
+    if (obj.cnt-- == 1) {
+        obj.a = 0;
+        return true;
+    }
+    const ret = false;
+    return ret;
+};
 
-export function __wbg_setTimeout_e576609a7b16dbf3(arg0, arg1) {
+export function __wbg_queueMicrotask_48421b3cc9052b68(arg0) {
+    const ret = getObject(arg0).queueMicrotask;
+    return addHeapObject(ret);
+};
+
+export function __wbg_queueMicrotask_12a30234db4045d3(arg0) {
+    queueMicrotask(getObject(arg0));
+};
+
+export function __wbg_fetch_f8d735ba6fe1b719(arg0) {
+    const ret = fetch(getObject(arg0));
+    return addHeapObject(ret);
+};
+
+export const __wbg_clearTimeout_504141baff1af510 = typeof clearTimeout == 'function' ? clearTimeout : notDefined('clearTimeout');
+
+export function __wbg_setTimeout_1b3eca6cdbcb6684(arg0, arg1) {
     const ret = setTimeout(getObject(arg0), arg1 >>> 0);
     return ret;
 };
@@ -1981,42 +2220,18 @@ export function __wbindgen_in(arg0, arg1) {
     return ret;
 };
 
-export function __wbindgen_cb_drop(arg0) {
-    const obj = takeObject(arg0).original;
-    if (obj.cnt-- == 1) {
-        obj.a = 0;
-        return true;
-    }
-    const ret = false;
-    return ret;
-};
-
-export function __wbg_fetch_25e3a297f7b04639(arg0) {
-    const ret = fetch(getObject(arg0));
-    return addHeapObject(ret);
-};
-
-export function __wbg_queueMicrotask_48421b3cc9052b68(arg0) {
-    const ret = getObject(arg0).queueMicrotask;
-    return addHeapObject(ret);
-};
-
-export function __wbg_queueMicrotask_12a30234db4045d3(arg0) {
-    queueMicrotask(getObject(arg0));
-};
-
 export function __wbg_stringify_bbf45426c92a6bf5() { return handleError(function (arg0) {
     const ret = JSON.stringify(getObject(arg0));
     return addHeapObject(ret);
 }, arguments) };
 
-export function __wbindgen_closure_wrapper2977(arg0, arg1, arg2) {
-    const ret = makeMutClosure(arg0, arg1, 423, __wbg_adapter_50);
+export function __wbindgen_closure_wrapper3055(arg0, arg1, arg2) {
+    const ret = makeMutClosure(arg0, arg1, 351, __wbg_adapter_50);
     return addHeapObject(ret);
 };
 
-export function __wbindgen_closure_wrapper3117(arg0, arg1, arg2) {
-    const ret = makeMutClosure(arg0, arg1, 465, __wbg_adapter_53);
+export function __wbindgen_closure_wrapper5465(arg0, arg1, arg2) {
+    const ret = makeMutClosure(arg0, arg1, 1283, __wbg_adapter_53);
     return addHeapObject(ret);
 };
 
